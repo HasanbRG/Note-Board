@@ -11,10 +11,15 @@ declare(strict_types=1);
 <body>
   <header class="topbar">
     <div class="brand">Note Board</div>
-    <button id="addCardBtn" class="btn">+ New card</button>
+    <button id="addNoteBtn" class="btn">+ Note</button>
+    <button id="addSectionBtn" class="btn">+ Section</button>
   </header>
 
-  <main id="board" class="board" aria-label="Board canvas"></main>
+  <!-- Viewport stays fixed to the screen -->
+  <main id="viewport" class="viewport" aria-label="Board canvas">
+    <!-- Board is a huge "world" that we pan/zoom -->
+    <div id="board" class="board"></div>
+  </main>
 
   <script src="/assets/js/app.js" defer></script>
 </body>
