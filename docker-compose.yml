@@ -2,7 +2,10 @@ version: "3.8"
 
 services:
   web:
-    image: php:8.2-apache
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: note-board-web
     ports:
       - "8080:80"
     volumes:
@@ -13,6 +16,7 @@ services:
 
   db:
     image: mysql:8.0
+    container_name: note-board-db
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -23,6 +27,7 @@ services:
       - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
 
 volumes:
   db_data:
